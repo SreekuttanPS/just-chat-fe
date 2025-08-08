@@ -42,7 +42,7 @@ const Messages = () => {
         <div className="text-center text-xs text-gray-400">No messages yet</div>
       ) : null}
       {/* Message from other */}
-      {messages.reverse()?.map((messageObj) =>
+      {messages?.map((messageObj) =>
         messageObj.messageType === "text" ? (
           <Fragment key={messageObj?.id}>
             {messageObj.transferType === "recieved" && (
