@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { socket } from "../../socket";
 import chatStore from "../../zustand/store";
@@ -6,6 +6,7 @@ import chatStore from "../../zustand/store";
 const ChatInput = () => {
   const [input, setInput] = useState("");
   const currentUser = chatStore((state) => state.currentUser);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSend = () => {
     if (input.trim()) {
@@ -13,14 +14,18 @@ const ChatInput = () => {
         message: input,
         username: currentUser,
       });
+      setInput("");
+      inputRef.current?.focus();
     }
   };
 
   return (
     <div className="p-4 border-t bg-white dark:bg-gray-800 dark:text-gray-300 flex items-center gap-2">
       <input
+        ref={inputRef}
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyUp={(e) => (e.key === "Enter" ? handleSend() : null)}
         type="text"
         name="message"
         id="message"

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useRef } from "react";
 
 import { socket } from "../../socket";
 
@@ -10,6 +10,7 @@ import chatStore from "../../zustand/store";
 const Messages = () => {
   const addMessage = chatStore((state) => state.addMessage);
   const messages = chatStore((state) => state.messages);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onRecievingMessages(response: IncomingMessage) {
@@ -30,6 +31,10 @@ const Messages = () => {
       socket.off("user joined", onUserJoinAndLeave);
     };
   }, [addMessage]);
+
+  useEffect(() => {
+    bottomRef?.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="flex-1 p-6 space-y-4 overflow-y-auto bg-gray-50 dark:bg-gray-700">
@@ -59,6 +64,7 @@ const Messages = () => {
 
       {/* Timestamp */}
       {/* <div className="text-center text-xs text-gray-400">9:31am</div> */}
+      <div ref={bottomRef}></div>
     </div>
   );
 };
