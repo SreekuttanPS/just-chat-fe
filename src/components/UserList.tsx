@@ -14,19 +14,19 @@ const UserList = () => {
       <ul className="divide-y">
         <li className="px-4 py-3 flex items-center gap-3 bg-gray-100">
           <img
-            src="https://i.pravatar.cc/40?img=12"
+            src="/chat.svg"
             className="w-10 h-10 rounded-full"
             alt="Lauren Wilson"
           />
           <div className="flex-1">
-            <p className="font-medium">Lauren Wilson</p>
+            <p className="font-medium">Common Group</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              Help me open the door.
+              Work In Progress.
             </p>
           </div>
           <span className="text-xs text-gray-400 dark:text-gray-300">3h</span>
         </li>
-        <li className="px-4 py-3 flex items-center gap-3">
+        {/* <li className="px-4 py-3 flex items-center gap-3">
           <img
             src="https://i.pravatar.cc/40?img=5"
             className="w-10 h-10 rounded-full"
@@ -39,7 +39,7 @@ const UserList = () => {
             </p>
           </div>
           <span className="text-xs text-gray-400 dark:text-gray-300">6h</span>
-        </li>
+        </li> */}
         {/* Add others similarly... */}
       </ul>
     </section>
