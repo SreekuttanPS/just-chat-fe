@@ -46,7 +46,10 @@ const Messages = () => {
         messageObj.messageType === "text" ? (
           <Fragment key={messageObj?.id}>
             {messageObj.transferType === "recieved" && (
-              <RecievedMessage message={messageObj?.message} />
+              <RecievedMessage
+                message={messageObj?.message}
+                username={messageObj?.username}
+              />
             )}
             {messageObj.transferType === "sent" && (
               <SentMessage message={messageObj?.message} />
